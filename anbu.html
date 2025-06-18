@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Products.in</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      padding-bottom: 60px;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #222;
+      color: white;
+      padding: 12px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      position: relative;
+      font-size: 16px;
+    }
+
+    .cart-badge {
+      background: red;
+      color: white;
+      border-radius: 50%;
+      padding: 2px 6px;
+      font-size: 12px;
+      position: absolute;
+      top: -8px;
+      right: -14px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .product-card {
+      background-color: white;
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .product-card:hover {
+      transform: scale(1.02);
+    }
+
+    .product-card img {
+      width: 100%;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .product-title {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .product-description {
+      font-size: 14px;
+      margin-bottom: 12px;
+      color: #555;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .add-cart-btn, .buy-now-btn {
+      flex: 1;
+      padding: 8px 10px;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .add-cart-btn {
+      background-color: #28a745;
+    }
+
+    .add-cart-btn:hover {
+      background-color: #218838;
+    }
+
+    .buy-now-btn {
+      background-color: #007bff;
+    }
+
+    .buy-now-btn:hover {
+      background-color: #0069d9;
+    }
+  </style>
+
+  <script>
+    function loadCartCount() {
+      const count = localStorage.getItem('cartCount') || 0;
+      document.getElementById('cart-count').textContent = count;
+    }
+
+    function addToCart(productName) {
+      let count = parseInt(localStorage.getItem('cartCount') || '0');
+      count++;
+      localStorage.setItem('cartCount', count);
+      document.getElementById('cart-count').textContent = count;
+      alert(productName + ' added to cart!');
+    }
+
+    function buyNow(productName) {
+      alert("Buying " + productName + " now!");
+      // Redirect to payment page if needed:
+      // window.location.href = "payment.html";
+    }
+
+    window.onload = loadCartCount;
+  </script>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="brand">Products.in</div>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Contact</a>
+      <a href="#">Cart 🛒 <span class="cart-badge" id="cart-count">0</span></a>
+    </div>
+  </div>
+
+  <!-- Product Grid -->
+  <div class="product-grid">
+
+    <!-- Repeat 16 Products -->
+    <div class="product-card">
+      <img src="phone.jpg" alt="Smartphone X100">
+      <h2 class="product-title">Smartphone X100</h2>
+      <p class="product-description">A fast and sleek smartphone</p>
+      <div class="buttons">
+        <button class="add-cart-btn" onclick="addToCart('Smartphone X100')">Add to Cart</button>
+        <button class="buy-now-btn" onclick="buyNow('Smartphone X100')">Buy Now</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="im.jpg" alt="Wireless Headphones">
+      <h2 class="product-title">Wireless Headphones</h2>
+      <p class="product-description">Experience the freedom of wireless audio with premium sound</p>
+      <div class="buttons">
+        <button class="add-cart-btn" onclick="addToCart('Wireless Headphones')">Add to Cart</button>
+        <button class="buy-now-btn" onclick="buyNow('Wireless Headphones')">Buy Now</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="smartwatch.jpg" alt="smartwatch pro">
+      <h2 class="product-title">smartwatch pro</h2>
+      <p class="product-description">Track your fitness and stay connected on the go</p>
+      <div class="buttons">
+        <button class="add-cart-btn" onclick="addToCart('Gaming Mouse')">Add to Cart</button>
+        <button class="buy-now-btn" onclick="buyNow('Gaming Mouse')">Buy Now</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="loptop.jpg" alt="Gaming loptop">
+      <h2 class="product-title">Gameing loptop</h2>
+      <p class="product-description">High-performance laptop designed for ultimate gaming</p>
+      <div class="buttons">
+        <button class="add-cart-btn" onclick="addToCart('Mechanical Keyboard')">Add to Cart</button>
+        <button class="buy-now-btn" onclick="buyNow('Mechanical Keyboard')">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- 12 more below -->
+    <div class="product-card"><img src="tv.jpg" alt="Smartwatch Pro"><h2 class="product-title">TV</h2><p class="product-description">Bring the cinema home stunning visuals  smart features unbeatable prices</p><div class="buttons"><button class="add-cart-btn" onclick="addToCart('Smartwatch Pro')">Add to Cart</button><button class="buy-now-btn" onclick="buyNow('Smartwatch Pro')">Buy Now</button></div></div>
+
+    <div class="product-card"><img src="bluetooth.jpg" alt="Bluetooth Speaker"><h2 class="product-title">Bluetooth Speaker</h2><p class="product-description">Big sound, small package take your music anywhere</p><div class="buttons"><button class="add-cart-btn" onclick="addToCart('Bluetooth Speaker')">Add to Cart</button><button class="buy-now-btn" onclick="buyNow('Bluetooth Speaker')">Buy Now</button></div></div>
+
+    <div class="product-card"><img src="iphone case.jpg" alt="Tablet Z8"><h2 class="product-title">Iphone backcase</h2><p class="product-description">Style meets protection dress your iPhone in premium armor</p><div class="buttons"><button class="add-cart-btn" onclick="addToCart('Tablet Z8')">Add to Cart</button><button class="buy-now-btn" onclick="buyNow('Tablet Z8')">Buy Now</button></div></div>
+    
+
+    <div class="product-card"><img src="washing.jpg" alt="Laptop Air 14"><h2 class="product-title">washing machine</h2><p class="product-description">Powerful cleaning gentle care your clothes deserve the bes</p><div class="buttons"><button class="add-cart-btn" onclick="addToCart('Laptop Air 14')">Add to Cart</button><button class="buy-now-btn" onclick="buyNow('Laptop Air 14')">Buy Now</button></div></div>
+
+    <div class="product-card"><img src="mixture.jpg" alt="USB-C Hub"><h2 class="product-title">mixture girnder</h2><p class="product-description">A must-have for every modern kitchen</p><div class="buttons"><button class="add-cart-btn" onclick="addToCart('USB-C Hub')">Add to Cart</button><button class="buy-now-btn" onclick="buyNow('USB-C Hub')">Buy Now</button></div></div>
+
+    <div class="product-card"><img src="air.jpg" alt="Portable SSD"><h2 class="product-title">Air conditioner</h2><p class="product-description">Cool comfort even on the hottest days</p><div class="buttons"><button class="add-cart-btn" onclick="addToCart('Portable SSD')">Add to Cart</button><button class="buy-now-btn" onclick="buyNow('Portable SSD')">Buy Now</button></div></div>
+
+    <div class="product-card"><img src="charger.jpg" alt="4K Monitor"><h2 class="product-title">mobile charger</h2><p class="product-description">Fast safe and reliable power up in no time</p><div class="buttons"><button class="add-cart-btn" onclick="addToCart('4K Monitor')">Add to Cart</button><button class="buy-now-btn" onclick="buyNow('4K Monitor')">Buy Now</button></div></div>
+
+    <div class="product-card"><img src="video.jpg" alt="gaming chair"><h2 class="product-title">video games</h2><p class="product-description">Non-stop entertainment right at your fingertips</p><div class="buttons"><button class="add-cart-btn" onclick="addToCart('Gaming Chair')">Add to Cart</button><button class="buy-now-btn" onclick="buyNow('Gaming Chair')">Buy Now</button></div></div>
+
+    <div class="product-card"><img src="power.jpg" alt="Webcam HD"><h2 class="product-title">power banks</h2><p class="product-description">Compact in size massive in power</p><div class="buttons"><button class="add-cart-btn" onclick="addToCart('Webcam HD')">Add to Cart</button><button class="buy-now-btn" onclick="buyNow('Webcam HD')">Buy Now</button></div></div>
+
+    <div class="product-card"><img src="home.jpg" alt="VR Headset"><h2 class="product-title">smarthome devices</h2><p class="product-description">Live smarter, not harder automate your life with ease</p><div class="buttons"><button class="add-cart-btn" onclick="addToCart('VR Headset')">Add to Cart</button><button class="buy-now-btn" onclick="buyNow('VR Headset')">Buy Now</button></div></div>
+
+    <div class="product-card"><img src="dish.jpg" alt="Drone Max"><h2 class="product-title">Dish washers</h2><p class="product-description">Sparkling clean dishes at the touch of a button</p><div class="buttons"><button class="add-cart-btn" onclick="addToCart('Drone Max')">Add to Cart</button><button class="buy-now-btn" onclick="buyNow('Drone Max')">Buy Now</button></div></div>
+
+    <div class="product-card"><img src="deep.jpg" alt="Fitness Band"><h2 class="product-title">Deep Freezers</h2><p class="product-description">Keep it fresh, keep it frozen your foods best friend</p><div class="buttons"><button class="add-cart-btn" onclick="addToCart('Fitness Band')">Add to Cart</button><button class="buy-now-btn" onclick="buyNow('Fitness Band')">Buy Now</button></div></div>
+
+  </div>
+</body>
+</html>
